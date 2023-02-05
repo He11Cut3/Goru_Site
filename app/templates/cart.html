@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+
+{% block content %}
+
+        <section class="cart-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                            <table class="cart-table">
+                                <thead>
+                                    <tr>
+                                        <th class="product-name-thumbnail">Наименование</th>
+                                        <th class="product-price">Цена</th>
+                                        <th class="product-quantity">Кол-во</th>
+                                        <th class="product-remove">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                        <tr class="cart-item">
+                                            <td class="product-thumbnail-title">
+                                                <img src="{{ item.product.image.url }}" alt="" class="" >
+                                                <a class="product-name">{{ item.product.name }}</a> 
+                                            </td>
+                                            <td class="product-unit-price">
+                                                <div class="product-price clearfix">
+                                                    <span class="price">
+                                                        <span><span class="woocommerce-Price-currencySymbol"></span>{{ item.price }} ₽</span>
+                                                    </span>           
+                                                </div>
+                                            </td>
+                                            <td class="product-quantity clearfix">
+                                                <div class="quantityd clearfix">
+                                                 {{ item.quantity }} шт.                                              
+                                                </div>
+                                            </td>
+                                            <td class="product-remove">
+                                                <form method="post" action="{% url 'cart_delete_item' item.pk %}">
+                                                    {% csrf_token %}
+                                                        <button type="submit" class="button"><u>X</u></button>
+                                                </form>
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="cart-totals">
+                                        <h2>Итог</h2>
+                                        <table class="shop-table">
+                                            <tbody>
+                                                <tr class="cart-subtotal">
+                                                    <th>Покупка на сумму: </th>
+                                                    <td data-title="Subtotal">
+                                                        <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>{{ cart.amount }} ₽</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="wc-proceed-to-checkout">
+                                            <a href="#" class="checkout-button">Купить</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Cart Section End -->
+{% endblock content %}

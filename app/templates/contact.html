@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+{% block content %}
+
+        <!-- Banner Start -->
+        <section class="page-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="round-shape"></span>
+                        <h2 class="banner-title">Контакт</h2>
+                        <div class="bread-crumb"><a href="{% url 'index' %}">Home</a> / Contact</div>
+                    </div>
+                </div>
+            </div>
+        </section>    
+        <!-- Banner End -->
+
+        <!-- History Section Start -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-7">
+                        <h3 class="sec-title">Магазин</h3>
+                        <div class="info-contact">
+                            <h5>Адрес: <p> Шараповский пр-д, 2, Мытищи, Московская обл., 141006 </p></h5>
+                            <h5>Номер телефона для связи: <p> +7(901)-315-16-40</p></h5>
+                            <h5>Почта: <p> Goru@mail.ru</p></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <div class="contact-thumb">
+                            <img src="{% static 'assets/images/contact.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mar-top-bottom">
+                    <div class="col-lg-12">
+                        <div class="goru_map grayscale">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71534.61191219237!2d37.78918898878908!3d55.92412164502505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b53196e02ed029%3A0x21b07517e9bf2e22!2z0KLQoNCaINCa0YDQsNGB0L3Ri9C5INC60LjRgg!5e0!3m2!1sru!2sru!4v1674812295346!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        <!-- History Section End -->
+{% endblock content %}
+   

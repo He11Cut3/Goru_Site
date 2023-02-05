@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load menu_tags %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+{% block content %}
+
+        <!-- Slider Start -->
+        {% include 'top/top_nav.html' %}
+        <!-- Slider Start -->
+
+        <!-- Categories Section Start -->
+        <section class="categorie-section-2">
+                <div class="sec-heading rotate-rl"><span>Top</span> {{ product.name }} </div>
+                <div class="container">
+                    <div class="row">
+                        {% get_list_category as list_category %}
+                        {% for node in list_category %}
+                        <div class="col-lg-4 col-md-6">
+                            <a href="{% url 'product_list' node.slug %}" class="single-cate with-title">
+                                <span>{{ node.name }}</a></span>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </section>
+        <!-- Categories Section end -->
+{% endblock content %}
+
+

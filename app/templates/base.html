@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %} {% endblock title %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Include All CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/themewar-icons.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/settings.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/lightcase.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/preset.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/ignore_in_wp.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}"/>
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}"/>
+        <!-- End Include All CSS -->
+
+        <!-- Favicon Icon -->
+        <link rel="icon"  type="{% static 'image/png' %}" href="{% static 'assets/images/favicon.png' %}">
+        <!-- Favicon Icon -->
+    </head>
+    <body class="home-02">
+        <!-- Preloader Start -->
+        <div class="preloader" id="preloader">
+            <div class="la-ball-scale-multiple la-2x">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- Preloader End -->
+
+        <!-- Header Start -->
+    {% include 'top/top_menu.html' %}
+        <!-- Header End -->
+       
+    {% block content %}
+        
+    {% endblock content %}
+    
+    
+    
+    <!-- Footer Start -->
+    {% include 'outside/outside.html' %}
+    <!-- Footer Ened -->
+
+    <!-- Include All JS -->
+    <script src= "{% static 'assets/js/jquery.js' %} "></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'assets/js/modernizr.custom.js' %} "></script>
+    <script src="{% static 'assets/js/jquery.appear.js' %} "></script>
+    <script src="{% static 'assets/js/jquery-ui.js' %} "></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %} "></script>
+    <script src="{% static 'assets/js/jquery.shuffle.min.js' %} "></script>
+    <script src="{% static 'assets/js/lightcase.js' %} "></script>
+    <script src="{% static 'assets/js/jquery.easing.1.3.js' %} "></script>
+    <script src="{% static 'assets/js/jquery.plugin.min.js' %} "></script>
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %} "></script>
+    <script src="{% static 'assets/js/tweenmax.min.js' %} "></script>
+
+    <script src="{% static 'assets/js/jquery.themepunch.tools.min.js' %} "></script>
+    <script src="{% static 'assets/js/jquery.themepunch.revolution.min.js' %} "></script>
+
+    <!-- Rev slider Add on Start -->
+    <script src="{% static 'assets/js/extensions/revolution.extension.actions.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.carousel.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.kenburn.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.layeranimation.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.migration.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.navigation.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.parallax.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.slideanims.min.js' %} "></script>
+    <script src="{% static 'assets/js/extensions/revolution.extension.video.min.js' %} "></script>
+    <!-- Rev slider Add on End -->
+
+    <script src="{% static 'assets/js/theme.js' %} "></script>
+</body>
+</html>

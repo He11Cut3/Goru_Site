@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load menu_tags %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+{% block content %}
+        <!-- Banner Start -->
+        <section class="page-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="round-shape"></span>
+                        <h2 class="banner-title">Категория: <span> {{ product_list.first.category.name }}</span> </h2>
+                        <div class="bread-crumb"><a href="/">Home</a> / <span>{{ product_list.first.category.slug }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>    
+        <!-- Banner End -->
+        <!-- Shop Section Start -->
+        
+            <section class="shop-fullwidth">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="product-cate">
+                            <h5>Categories: </h5>
+                            <ul>
+                                {% include 'category/sidebar_category.html' %}
+                            </ul>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="sort-view">
+                                <a class="view-mode active" href="#"><i class="twi-th"></i></a>
+                                <a class="view-mode" href="#"><i class="twi-bars"></i></a>
+                                <div class="sorts">
+                                    <select name="sort">
+                                        <option value="">Default Sorting</option>
+                                        <option selected="selected" value="">low to high</option>
+                                        <option value="">high to low</option>
+                                        <option value="">Best Seller</option>
+                                        <option value="">Popular Products</option>
+                                    </select>
+                                    <i class="twi-angle-down1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for product in object_list %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-shop-product">
+                                <form method="post" action="{% url 'add_item_to_cart' product.pk %}">
+                                <div class="sp-thumb">
+                                    <a class="sp-wishlist" href="{{ product.get_absolute_url }}"><i class="twi-search"></i></a>
+                                    <img src="{{ product.image.url }}" alt="" class="">
+                                </div>
+                                <div class="sp-details">
+                                    <h4>{{ product.name }}</h4>
+                                    <div class="product-price clearfix">
+                                        <span class="price">
+                                            <ins><span><span class="woocommerce-Price-currencySymbol"></span>{{ product.price }} ₽ </span></ins>
+                                        </span>         
+                                    </div>
+                                    {% csrf_token %}
+                                    <div class="sp-details-hover" aria-orientation="horizontal">
+                                        <button class="add-to-cart-btn" href=""><span>В корзину</span></button>
+                                        <input type="number" value="1" min="1" style="width: calc(4ch + 5px)" name="quantity"  title="Qty"required id ="id_quantity">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Service Section Start -->
+                <section class="service-section service-ab">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-service">
+                                    <img src="assets/images/home/truck2.png" alt="">
+                                        <h4>Бесплатная доставка</h4>
+                                    <p>Доставка осуществляется от 50 тысячи рублей!</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-service">
+                                    <img src="assets/images/home/headphone2.png" alt="">
+                                        <h4>24/7 работа магазина</h4>
+                                    <p>При совершении заказа с вами свяжется сотрудник для уточнение заказа</p>
+                            </div>
+                        </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-service">
+                                <img src="assets/images/home/undo2.png" alt="">
+                                    <h4>30 дней на возврат товара</h4>
+                                <p>Если не был потерян вид нового товара</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Service Section End -->
+                
+            </section>
+        
+    </body>
+</html>
+
+{% endblock content %}

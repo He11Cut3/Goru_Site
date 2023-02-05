@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+{% block content %}
+
+        <!-- Login Register Section Start -->
+        <section class="login-section">
+            <div class="container">
+                <form method="post" action="{% url 'registration' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <h3 class="sec-title">Регистрация</h3>
+                            <p class="sec-desc">
+                                
+                            </p>
+                            
+                            <div class="register-form">
+                                <form action="#" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            {% for field in user_form %}
+                                             <span style="color:red"> {{ field.errors }} </span>
+                                             {{ field }}
+                                            {% endfor %}
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="keep-log-regi">
+                                        <input type="radio" id="register" name="register" value="keep-register">
+                                        <label for="register">
+                                            Я принимаю условия, включая политику конфиденциальности
+                                        </label>   
+                                    </div>
+                                    <input type="submit" name="submit" value="register">
+                                </form>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Login Register Section End -->
+    </body>
+</html>
+
+{% endblock content %}

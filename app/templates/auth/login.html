@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+{% block content %}
+
+        <!-- Login Register Section Start -->
+        <section class="login-section">
+            <div class="container">
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <h3 class="sec-title">Вход в аккаунт</h3>
+                            <p class="sec-desc">
+                                Войдите в свою учетную запись, чтобы открыть для себя все замечательные функции
+                                
+                            </p>
+                            <p class="sec-desc">
+                                {{ attention }}
+                            </p>
+                            <div class="login-form">
+                                <form action="#" method="post">
+                                    <input type="text" id="login" name="username" id = "id_username"  for ="id_username"  placeholder="Логин">
+                                    <input type="password" name="password"  for ="id_password" id = "id_password" placeholder="Пароль">
+                                    <div class="keep-login">
+                                        <label for="login"> </label>   
+                                        <a href="{% url 'registration' %}"> Нету аккаунта?</a>
+                                    </div>
+                                    
+                                    <input type="submit" name="submit" value="login ">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Login Register Section End -->
+    </body>
+</html>
+
+{% endblock content %}

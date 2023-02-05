@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Hells
+{% endblock title %}
+
+{% block content %}
+
+ <!-- Shop Section Start -->
+ <section class="single-product-section">
+    <form method="post" action="{% url 'add_item_to_cart' product.pk %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12">
+                        <div class="sp-thumb">
+                            <img src="{{ product.image.url }}" alt="" class="">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="sin-product-details">
+                            <h3>{{ product.name }}</h3>
+                            <div class="product-price clearfix">
+                                <span class="price">
+                                    <span><span class="woocommerce-Price-currencySymbol"></span>{{ product.price }} ₽</span>
+                                </span>         
+                            </div>
+                            <div class="pro-excerp">
+                                <p>
+                                    {{ product.text | slice:":150"  | safe }}
+                                </p>
+                            </div>
+                            <div class="product-cart-qty" aria-orientation="horizontal">
+                                {% csrf_token %}
+                                <button class="add-to-cart-btn" href=""><span> В корзину</span></button>
+                                <input type="number" value="1" min="1" style="width: calc( 4ch + 5px )" name="quantity"  title="Qty"required id ="id_quantity">
+                            </div>
+                        </div>
+                    </form>  
+                    </div>
+                </div>
+                <div class="row"><div class="col-lg-12"><div class="divider"></div></div></div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <div class="product-tabarea">
+                            <ul class="nav nav-tabs productTabs" id="productTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="descriptions-tab" data-toggle="tab" href="#descriptions" role="tab" aria-controls="descriptions" aria-selected="true">Описание</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Коментарии ({{ product.get_comments.count }})</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="productTabContent">
+                                <div class="tab-pane fade show active" id="descriptions" role="tabpanel" aria-labelledby="descriptions-tab">
+                                    <div class="descriptionContent">
+                                        <p>
+                                        {{ product.text| safe  }} 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="descriptions-tab">
+                                    <div class="comment-area">
+                                        <h4 class="comment-title">Коментариев: {{ product.get_comments.count }}</h4>
+                                        {% for comment in product.get_comments %}
+                                        <ol class="comment-list">
+                                            <li>
+                                                <div class="single-comment">
+                                                    <img src="{% static 'images/user_img.png' %}" alt="">
+                                                    <h5><a href="#">{{ comment.name }}</a><span>{{ comment.create_at }}</span></h5>
+                                                    <div class="comment">
+                                                        <p>
+                                                            {{ comment.message }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                        {% endfor %}
+                                        <div class="comment-form-wrapper">
+                                            <h5>Добавить коментарий</h5>
+                                            <form action="{% url 'create_comment' pk=product.id %}" method="post" class="row comment-form">
+                                                {% csrf_token %}
+                                                    <div class="col-lg-6 col-md-6">
+                                                        {{ form.name }}
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        {{ form.message }}
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <input type="submit" name="" value="Опубликовать">
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-4">
+                        <div class="product-speciality">
+                            <h5>Характеристики</h5>
+                            <ul>
+                                {{ product.specifications | safe }}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+</section>
+<!-- Service Section Start -->
+<section class="service-section service-ab">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-service">
+                    <img src="assets/images/home/truck2.png" alt="">
+                        <h4>Бесплатная доставка</h4>
+                    <p>Доставка осуществляется от 50 тысячи рублей!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-service">
+                    <img src="assets/images/home/headphone2.png" alt="">
+                        <h4>24/7 работа магазина</h4>
+                    <p>При совершении заказа с вами свяжется сотрудник для уточнение заказа</p>
+            </div>
+        </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-service">
+                <img src="assets/images/home/undo2.png" alt="">
+                    <h4>30 дней на возврат товара</h4>
+                <p>Если не был потерян вид нового товара</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Service Section End -->
+{% endblock content %}
