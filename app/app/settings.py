@@ -85,10 +85,10 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'Shop_Goru',
-    'USER': 'postgres',
-    'PASSWORD': '',
+    'USER': '', ##Указать своего пользователя от Postg
+    'PASSWORD': '', ##Указать свой пароль от Postg
     'HOST': '127.0.0.1',
-    'PORT': ''
+    'PORT': '25565'
     }
 }
 
