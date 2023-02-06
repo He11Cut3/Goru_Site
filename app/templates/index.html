@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static menu_tags cache %}
 
-{% load menu_tags %}
 
 {% block title %}
     Hells
 {% endblock title %}
+
+{% cache 5000 index %}
+
 
 {% block content %}
 
@@ -32,4 +34,4 @@
         <!-- Categories Section end -->
 {% endblock content %}
 
-
+{% endcache %}

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static cache %}
 
 {% block title %}
     Hells
 {% endblock title %}
+
+{% cache 5000 cart %}
 
 
 {% block content %}
@@ -80,3 +82,5 @@
         </section>
         <!-- Cart Section End -->
 {% endblock content %}
+
+{% endcache %}

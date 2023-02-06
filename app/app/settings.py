@@ -86,9 +86,9 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'Shop_Goru',
     'USER': 'postgres',
-    'PASSWORD': '118189',
+    'PASSWORD': '',
     'HOST': '127.0.0.1',
-    'PORT': '25565'
+    'PORT': ''
     }
 }
 
@@ -137,3 +137,11 @@ CKEDITOR_UPLOAD_PATH = "img_photo/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache')
+    }
+}

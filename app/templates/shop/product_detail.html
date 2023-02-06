@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static cache %}
 
 {% block title %}
     Hells
 {% endblock title %}
+
+{% cache 5000 product_detail %}
 
 {% block content %}
 
@@ -139,3 +141,5 @@
 </section>
 <!-- Service Section End -->
 {% endblock content %}
+
+{% endcache %}
